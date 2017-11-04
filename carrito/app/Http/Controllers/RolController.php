@@ -14,7 +14,8 @@ class RolController extends Controller
      */
     public function index()
     {
-        //
+        $roles = Rol::all();
+        return $roles;
     }
 
     /**
@@ -30,6 +31,8 @@ class RolController extends Controller
     public function store(Request $request)
     {
         Rol::create($request->all());
+
+        return redirect('/rol');
     }
     public function show(Rol $rol)
     {
@@ -42,9 +45,11 @@ class RolController extends Controller
      * @param  \App\Models\Rol  $rol
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rol $rol)
+    public function edit($id)
     {
-        //
+        $roles = Rol::findOrFail($id);
+
+        return view('rol.edit', compact('roles'));
     }
 
     /**
@@ -54,9 +59,13 @@ class RolController extends Controller
      * @param  \App\Models\Rol  $rol
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rol $rol)
+    public function update(Request $request, $id)
     {
-        //
+        $roles = Rol::findOrFail($id);
+
+        $roles->update($request->all());
+
+        return redirect('/rol');
     }
 
     /**
