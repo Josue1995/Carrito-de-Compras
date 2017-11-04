@@ -8,7 +8,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-
+    public function carrito()
+    {
+      return $this->hasOne('App\Models\Carrito');
+    }
     /**
      * The attributes that are mass assignable.
      *

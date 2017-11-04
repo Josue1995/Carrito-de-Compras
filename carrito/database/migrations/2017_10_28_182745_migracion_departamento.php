@@ -13,11 +13,11 @@ class MigracionDepartamento extends Migration
      */
     public function up()
     {
-        Schema::create('departamento', function (Blueprint $table) {
+        Schema::create('departamentos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('inventario_id')->unsigned();
             $table->string('nombre_departamento');
-            $table->foreign('inventario_id')->references('id')->on('inventario')->onDelete('cascade');
+            $table->foreign('inventario_id')->references('id')->on('inventarios')->onDelete('cascade');
             $table->timestamps();
         });
     }

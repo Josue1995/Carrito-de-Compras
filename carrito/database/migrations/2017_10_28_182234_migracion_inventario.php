@@ -13,7 +13,7 @@ class MigracionInventario extends Migration
      */
     public function up()
     {
-        Schema::create('inventario', function (Blueprint $table) {
+        Schema::create('inventarios', function (Blueprint $table) {
             $table->increments('id');
             $table->smallInteger('stock_min');
             $table->bigInteger('stock_max');

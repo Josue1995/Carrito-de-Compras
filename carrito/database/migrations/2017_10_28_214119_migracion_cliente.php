@@ -13,16 +13,16 @@ class MigracionCliente extends Migration
      */
     public function up()
     {
-        Schema::create('cliente', function (Blueprint $table) {
+        Schema::create('clientes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('roles_id');
+            $table->integer('roles_id')->unsigned();
             $table->string('nombres');
             $table->string('apellidos');
             $table->string('direccion');
             $table->string('pais');
             $table->string('ciudad');
-            $table->integer('users_id')->unsigned();
-            $table->foreign('users_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('users_id');
+            $table->foreign('roles_id')->references('id')->on('rols')->onDelete('cascade');
             $table->timestamps();
         });
     }

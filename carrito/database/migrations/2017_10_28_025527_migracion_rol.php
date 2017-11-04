@@ -13,7 +13,7 @@ class MigracionRol extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function(Blueprint $table){
+        Schema::create('rols', function(Blueprint $table){
           $table-> increments('id');
           $table->string('nombre_rol');
           $table->timestamps();

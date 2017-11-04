@@ -13,14 +13,14 @@ class MigracionEmpresa extends Migration
      */
     public function up()
     {
-        Schema::create('empresa', function (Blueprint $table) {
+        Schema::create('empresas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('inventario_id')->unsigned();
             $table->integer('roles_id')->unsigned();
             $table->integer('users_id');
             $table->string('nombre_empresa');
-            $table->foreign('inventario_id')->references('id')->on('inventario')->onDelete('cascade');
-            $table->foreign('roles_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->foreign('inventario_id')->references('id')->on('inventarios')->onDelete('cascade');
+            $table->foreign('roles_id')->references('id')->on('rols')->onDelete('cascade');
             $table->timestamps();
         });
     }

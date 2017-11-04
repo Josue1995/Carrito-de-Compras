@@ -13,14 +13,14 @@ class MigracionArticulo extends Migration
      */
     public function up()
     {
-        Schema::create('articulo', function (Blueprint $table) {
+        Schema::create('articulos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('carrito_id')->unsigned();
-            $table->foreign('carrito_id')->references('id')->on('carrito')->onDelete('cascade');
+            $table->foreign('carrito_id')->references('id')->on('carritos')->onDelete('cascade');
             $table->integer('detalleArticulo_id')->unsigned();
-            $table->foreign('detalleArticulo_id')->references('id')->on('detalleArticulo')->onDelete('cascade');
+            $table->foreign('detalleArticulo_id')->references('id')->on('detalleArticulos')->onDelete('cascade');
             $table->integer('departamento_id')->unsigned();
-            $table->foreign('departamento_id')->references('id')->on('departamento')->onDelete('cascade');
+            $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade');
             $table->string('titulo_articulo');
             $table->double('precio', 15,2);
             $table->double('descuento',4,2);

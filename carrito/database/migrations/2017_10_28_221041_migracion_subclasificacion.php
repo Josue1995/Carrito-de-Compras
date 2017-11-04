@@ -13,21 +13,21 @@ class MigracionSubclasificacion extends Migration
      */
     public function up()
     {
-        Schema::create('subclasificacion', function (Blueprint $table) {
+        Schema::create('subclasificacions', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('inventario_id')->unsigned();
           $table->integer('departamento_id')->unsigned();
           $table->string('nombre_sub');
-          $table->foreign('inventario_id')->references('id')->on('inventario')->onDelete('cascade');
-          $table->foreign('departamento_id')->references('id')->on('departamento')->onDelete('cascade');
+          $table->foreign('inventario_id')->references('id')->on('inventarios')->onDelete('cascade');
+          $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade');
           $table->timestamps();
       });
-      Schema::create('articulo_subclasificacion',  function(Blueprint $table){
+      Schema::create('articulos_subclasificacions',  function(Blueprint $table){
         $table->increments('id');
         $table->integer('articulo_id')->unsigned();
         $table->integer('subclasificacion_id')->unsigned();
-        $table->foreign('articulo_id')->references('id')->on('articulo');
-        $table->foreign('subclasificacion_id')->references('id')->on('subclasificacion');
+        $table->foreign('articulo_id')->references('id')->on('articulos');
+        $table->foreign('subclasificacion_id')->references('id')->on('subclasificacions');
         $table->timestamps();
     });
   }
