@@ -5,7 +5,7 @@
 @section('titulo2', 'roles')
 
 @section('contenido')
-  <form action="/rol" method="post">
+  <form action="/Carrito-de-Compras/carrito/public/rol" method="post">
     {{csrf_field()}}
     <div class="form-group">
       <label for="nombre_rol">Nombre del rol</label>
