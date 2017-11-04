@@ -21,4 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Ruta para controlador de la clase ROL
 
-Route::resource('rol', 'RolController');
+Route::resource('/rol', 'RolController');
