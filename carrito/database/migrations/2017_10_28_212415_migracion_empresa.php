@@ -19,6 +19,9 @@ class MigracionEmpresa extends Migration
             $table->integer('roles_id')->unsigned();
             $table->integer('users_id');
             $table->string('nombre_empresa');
+            $table->string('telefono');
+            $table->string('direccion_empresa');
+            $table->string('correo_electronico');
             $table->foreign('inventario_id')->references('id')->on('inventarios')->onDelete('cascade');
             $table->foreign('roles_id')->references('id')->on('rols')->onDelete('cascade');
             $table->softDeletes();

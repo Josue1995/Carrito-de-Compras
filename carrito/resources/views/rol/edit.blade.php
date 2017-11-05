@@ -5,7 +5,7 @@
 @section('titulo2', 'roles, editar')
 
 @section('contenido')
-  <form action="/Carrito-de-Compras/carrito/public/rol/{{ $roles->id}}" method="post">
+  <form action="/Carrito-de-Compras/carrito/public/rol/{{ $roles->id }}" method="post">
     {{ method_field('PUT') }}
     {{csrf_field()}}
     <div class="form-group">
