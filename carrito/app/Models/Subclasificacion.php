@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subclasificacion extends Model
 {
+
   protected $dates = [
     'deleted_at'
   ];

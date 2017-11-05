@@ -30,6 +30,6 @@ class MigracionInventario extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inventario');
+        Schema::dropIfExists('inventarios');
     }
 }

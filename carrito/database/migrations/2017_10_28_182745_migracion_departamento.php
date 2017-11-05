@@ -30,6 +30,6 @@ class MigracionDepartamento extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departamento');
+        Schema::dropIfExists('departamentos');
     }
 }

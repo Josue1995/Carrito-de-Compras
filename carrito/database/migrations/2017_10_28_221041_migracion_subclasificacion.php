@@ -40,6 +40,6 @@ class MigracionSubclasificacion extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subclasificacion');
+        Schema::dropIfExists('subclasificacions');
     }
 }

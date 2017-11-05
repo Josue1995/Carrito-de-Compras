@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Departamento extends Model
 {
     protected $dates = [
+
     'deleted_at'
   ];
+      
     public function inventario()
     {
       return $this->belongsTo('App\Models\Inventario');

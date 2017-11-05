@@ -28,6 +28,6 @@ class MigracionCarrito extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carrito');
+        Schema::dropIfExists('carritos');
     }
 }

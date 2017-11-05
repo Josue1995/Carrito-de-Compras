@@ -36,6 +36,6 @@ class MigracionEmpresa extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('empresa');
+        Schema::dropIfExists('empresas');
     }
 }

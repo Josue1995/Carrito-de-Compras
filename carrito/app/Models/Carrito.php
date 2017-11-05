@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Carrito extends Model
 {
-	protected $dates = [
+
+  protected $dates = [
+
     'deleted_at'
   ];
     public function articulos()

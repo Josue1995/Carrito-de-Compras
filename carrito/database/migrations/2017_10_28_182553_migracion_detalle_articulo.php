@@ -13,7 +13,7 @@ class MigracionDetalleArticulo extends Migration
      */
     public function up()
     {
-        Schema::create('detalleArticulos', function (Blueprint $table) {
+        Schema::create('detallearticulos', function (Blueprint $table) {
             $table->increments('id');
             $table->text('descripcion_articulo')->nullable();
             $table->string('nombre_articulo');
@@ -29,6 +29,6 @@ class MigracionDetalleArticulo extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detalleArticulo');
+        Schema::dropIfExists('detallearticulos');
     }
 }

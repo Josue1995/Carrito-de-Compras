@@ -18,7 +18,7 @@ class MigracionArticulo extends Migration
             $table->integer('carrito_id')->unsigned();
             $table->foreign('carrito_id')->references('id')->on('carritos')->onDelete('cascade');
             $table->integer('detalleArticulo_id')->unsigned();
-            $table->foreign('detalleArticulo_id')->references('id')->on('detalleArticulos')->onDelete('cascade');
+            $table->foreign('detalleArticulo_id')->references('id')->on('detallearticulos')->onDelete('cascade');
             $table->integer('departamento_id')->unsigned();
             $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade');
             $table->string('titulo_articulo');
@@ -38,6 +38,6 @@ class MigracionArticulo extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articulo');
+        Schema::dropIfExists('articulos');
     }
 }

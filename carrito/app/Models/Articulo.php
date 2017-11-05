@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Articulo extends Model
 {
-    protected $dates = [
+
+  protected $dates = [
+
     'deleted_at'
   ];
 
