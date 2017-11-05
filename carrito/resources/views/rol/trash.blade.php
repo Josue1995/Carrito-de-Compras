@@ -30,7 +30,7 @@
 				</td>
 			</tr>
 			@empty
-				<h2>Aún no ha eliminado articulos.</h2>
+				<h2>Aún no ha eliminado roles.</h2>
 			@endforelse
 		</tbody>
 

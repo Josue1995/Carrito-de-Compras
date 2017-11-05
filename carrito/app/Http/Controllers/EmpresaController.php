@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Empresa;
+use App\Models\Rol;
+use App\User;
+use App\Models\Inventario;
 
 class EmpresaController extends Controller
 {
@@ -19,7 +22,9 @@ class EmpresaController extends Controller
 
     public function create()
     {
-        return view('empresa.create');
+        $roles = Rol::where('nombre_rol', 'like', 'Empresa')->get();
+        $usuarios = User::all();
+        return view('empresa.create')->with('roles', $roles)->with('usuarios', $usuarios);
     }
 
     

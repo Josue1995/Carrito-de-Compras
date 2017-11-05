@@ -26,6 +26,26 @@
     </div>
     <div class="form-group">
     	<label for="users_id"></label>
+        <select class="custom-select">
+            <option selected>Seleccione el dueño de la empresa</option>
+            @forelse($usuarios as $user)
+            <option required name="users_id" id="users_id">id: {{$user->id}} nombre: {{$user->name}}</option>
+            @empty
+            <option>No se encontraron roles</option>
+            @endforelse
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="roles_id"></label>
+        <select class="custom-select">
+            <option selected>Seleccione el rol</option>
+            @forelse($roles as $rol)
+            <option required name="roles_id" id="roles_id">id: {{$rol->id}} nombre: {{$rol->nombre_rol}}</option>
+            @empty
+            <option>No se encontraron roles</option>
+            @endforelse
+        </select>
     </div>
     <button type="submit" class="btn btn-primary">Guardar</button>
   </form>
