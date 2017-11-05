@@ -15,7 +15,6 @@
         <th scope="col">Nombre artículo</th>
 				<th scope="col">Acciones</th>
 			</tr>
-
 		</thead>
 		<tbody>
 			@forelse($det as $d)
