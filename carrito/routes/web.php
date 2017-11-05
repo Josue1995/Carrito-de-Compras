@@ -22,5 +22,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Ruta para controlador de la clase ROL
 
 Route::resource('/rol', 'RolController');
+// Ruta para listar objertos borrados
 Route::get('/rolTrashed', 'RolController@trash');
+//recupara objetos borrados
 Route::get('/rolTrashed/{id}', 'RolController@restore');
+
+//Ruta CRUD para empresa
+Route::resource('/empresa', 'EmpresaController');
+ 
+//Ruta CRUD para usuarios
+Route::resource('/usuario', 'UserController');
+Route::get('/usuarioTrashed', 'UserController@trash');

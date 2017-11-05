@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cliente extends Model
 {
+
+	protected $dates = [
+    'deleted_at'
+  ];
   public function user()
   {
     return $this->hasOne('App\User');

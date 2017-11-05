@@ -24,6 +24,7 @@ class MigracionEmpresa extends Migration
             $table->string('correo_electronico');
             $table->foreign('inventario_id')->references('id')->on('inventarios')->onDelete('cascade');
             $table->foreign('roles_id')->references('id')->on('rols')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Empresa extends Model
 {
+    protected $fillable = [
+      'nombre_empresa', 
+    ];
+
+    protected $dates = [
+    'deleted_at'
+  ];
+
     public function inventario()
     {
       return $this->hasOne('App\Models\Inventario');

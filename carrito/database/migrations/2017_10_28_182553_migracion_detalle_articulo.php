@@ -17,6 +17,7 @@ class MigracionDetalleArticulo extends Migration
             $table->increments('id');
             $table->text('descripcion_articulo')->nullable();
             $table->string('nombre_articulo');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
