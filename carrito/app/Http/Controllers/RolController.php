@@ -18,11 +18,12 @@ class RolController extends Controller
         return view('rol.index', compact('roles'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function trash()
+    {
+        $roles = Rol::onlyTrashed()->paginate(2);
+        return view('rol.trash', compact('roles'));
+    }
+
     public function create()
     {
         return view('rol.create');
@@ -74,8 +75,17 @@ class RolController extends Controller
      * @param  \App\Models\Rol  $rol
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rol $rol)
+    public function destroy($id)
     {
-        //
+        Rol::destroy($id);
+        return redirect('/rol');
+    }
+
+    public function restore($id)
+    {
+        $roles = Rol::findOrFail($id);
+
+        $roles->restore();
+        return Redirect('/rol');
     }
 }

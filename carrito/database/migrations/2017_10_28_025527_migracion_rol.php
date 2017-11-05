@@ -16,6 +16,7 @@ class MigracionRol extends Migration
         Schema::create('rols', function(Blueprint $table){
           $table-> increments('id');
           $table->string('nombre_rol');
+          $table->softDeletes();
           $table->timestamps();
         });
     }
