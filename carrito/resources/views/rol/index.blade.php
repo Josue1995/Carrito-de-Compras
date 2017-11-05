@@ -11,9 +11,9 @@
 			<tr>
 				<th scope="col">id</th>
 				<th scope="col">nombre rol</th>
-				<th scope="col">acciones</th>
+				<th scope="col">Acciones</th>
 			</tr>
-			
+
 		</thead>
 		<tbody>
 			@forelse($roles as $rol)
@@ -25,15 +25,18 @@
 						{{csrf_field()}}
 						{{method_field('DELETE')}}
 						<button class="btn btn-danger btn-sm">Eliminar</button>
+						<a href="rol/{{$rol->id}}/edit" type="button" class="btn btn-secondary btn-sm">Editar</a>
 						
 					</form>
+
 				</td>
+          		
 			</tr>
 			@empty
-				<h2>Aún no ha creado articulos.</h2>
-			@endforelse	
+				<h2>Aún no ha creado roles.</h2>
+			@endforelse
 		</tbody>
-		
+
 	</table>
 	<div class="offset-lg-6 offset-md-6 offset-sm-3 offset-xs-3">
 		{{$roles->links()}}
