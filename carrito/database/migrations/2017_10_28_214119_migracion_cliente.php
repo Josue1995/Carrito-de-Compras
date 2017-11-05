@@ -23,6 +23,7 @@ class MigracionCliente extends Migration
             $table->string('ciudad');
             $table->integer('users_id');
             $table->foreign('roles_id')->references('id')->on('rols')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -34,6 +35,6 @@ class MigracionCliente extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cliente');
+        Schema::dropIfExists('clientes');
     }
 }

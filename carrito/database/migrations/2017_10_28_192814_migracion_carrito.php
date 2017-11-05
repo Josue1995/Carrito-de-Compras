@@ -16,6 +16,7 @@ class MigracionCarrito extends Migration
         Schema::create('carritos', function (Blueprint $table) {
             $table->increments('id');
             $table->double('total',15,2);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class MigracionCarrito extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carrito');
+        Schema::dropIfExists('carritos');
     }
 }

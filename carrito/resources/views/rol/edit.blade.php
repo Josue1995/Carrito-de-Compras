@@ -10,7 +10,7 @@
     {{csrf_field()}}
     <div class="form-group">
       <label for="nombre_rol">Nombre del rol</label>
-      <input type="text" name="nombre_rol" class="form-control" id="nombre_rol" aria-describedby="rolHelp" placeholder="Ingrese el rol" value = {{$roles->nombre_rol}}  required>
+      <input type="text" name="nombre_rol" class="form-control" id="nombre_rol" aria-describedby="rolHelp" placeholder="Ingrese el rol" value = "{{$roles->nombre_rol}}"  required>
       <small id="rolHelp" class="form-text text-muted">Editar rol.</small>
     </div>
     <button type="submit" class="btn btn-primary">Guardar</button>

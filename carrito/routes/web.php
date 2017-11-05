@@ -24,3 +24,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/rol', 'RolController');
 Route::get('/rolTrashed', 'RolController@trash');
 Route::get('/rolTrashed/{id}', 'RolController@restore');
+
+//Ruta para controlador de la clase DetalleArtículo
+
+Route::resource('/detalle', 'DetalleArticuloController');
+Route::get('/detalleTrashed', 'DetalleArticuloController@trash');
+Route::get('/detalleTrashed/{id}', 'DetalleArticuloController@restore');

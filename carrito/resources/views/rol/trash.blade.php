@@ -13,7 +13,7 @@
 				<th scope="col">nombre rol</th>
 				<th scope="col">acciones</th>
 			</tr>
-			
+
 		</thead>
 		<tbody>
 			@forelse($roles as $rol)
@@ -23,19 +23,19 @@
 				<td>
 					<form action="/Carrito-de-Compras/carrito/public/rolTrashed/{{$rol->id}}" method="post">
 						{{csrf_field()}}
-						
+
 						<button class="btn btn-success btn-sm">Recuperar</button>
-						
+
 					</form>
 				</td>
 			</tr>
 			@empty
 				<h2>Aún no ha eliminado articulos.</h2>
-			@endforelse	
+			@endforelse
 		</tbody>
-		
+
+    <div class="offset-lg-6 offset-md-6 offset-sm-3 offset-xs-3">
 	</table>
-	<div class="offset-lg-6 offset-md-6 offset-sm-3 offset-xs-3">
 		{{$roles->links()}}
 	</div>
 

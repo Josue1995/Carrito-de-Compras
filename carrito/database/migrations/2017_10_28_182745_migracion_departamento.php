@@ -18,6 +18,7 @@ class MigracionDepartamento extends Migration
             $table->integer('inventario_id')->unsigned();
             $table->string('nombre_departamento');
             $table->foreign('inventario_id')->references('id')->on('inventarios')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class MigracionDepartamento extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departamento');
+        Schema::dropIfExists('departamentos');
     }
 }

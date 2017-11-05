@@ -5,6 +5,7 @@
 @section('titulo2', 'roles')
 
 @section('contenido')
+  <a href="rol/create" type="button" class="btn btn-secondary btn-sm " >Crear Rol</a>
   @parent
 	<table class="table">
 		<thead class="thead-dark">
@@ -26,14 +27,13 @@
 						{{method_field('DELETE')}}
 						<button class="btn btn-danger btn-sm">Eliminar</button>
 						<a href="rol/{{$rol->id}}/edit" type="button" class="btn btn-secondary btn-sm">Editar</a>
-						
 					</form>
-
 				</td>
-          		
 			</tr>
 			@empty
+       <div class="row">
 				<h2>Aún no ha creado roles.</h2>
+        </div>
 			@endforelse
 		</tbody>
 

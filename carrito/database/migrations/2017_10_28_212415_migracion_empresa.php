@@ -21,6 +21,7 @@ class MigracionEmpresa extends Migration
             $table->string('nombre_empresa');
             $table->foreign('inventario_id')->references('id')->on('inventarios')->onDelete('cascade');
             $table->foreign('roles_id')->references('id')->on('rols')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ class MigracionEmpresa extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('empresa');
+        Schema::dropIfExists('empresas');
     }
 }

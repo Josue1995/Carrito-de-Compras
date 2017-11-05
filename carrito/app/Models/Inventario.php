@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Inventario extends Model
 {
+    protected $dates = [
+      'deleted_at'
+    ];
     public function departamento()
     {
       return $this->hasMany('App\Models\Departamento');

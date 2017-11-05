@@ -20,6 +20,7 @@ class MigracionSubclasificacion extends Migration
           $table->string('nombre_sub');
           $table->foreign('inventario_id')->references('id')->on('inventarios')->onDelete('cascade');
           $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade');
+          $table->softDeletes();
           $table->timestamps();
       });
       Schema::create('articulos_subclasificacions',  function(Blueprint $table){
@@ -39,6 +40,6 @@ class MigracionSubclasificacion extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subclasificacion');
+        Schema::dropIfExists('subclasificacions');
     }
 }
