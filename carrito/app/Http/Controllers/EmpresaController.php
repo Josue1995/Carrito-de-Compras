@@ -30,8 +30,13 @@ class EmpresaController extends Controller
     
     public function store(Request $request)
     {
-        Empresa::create($request->all());
+        //Empresa::create($request->all());
+        $empresa = new Empresa($request->all());
+        $empresa->users_id = $request->get('users_id');
+        $empresa->roles_id = $request->get('roles_id');
+        $empresa->save();
         
+        return redirect('/empresa');
     }
 
     /**

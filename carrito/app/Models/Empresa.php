@@ -8,12 +8,12 @@ class Empresa extends Model
 {
 
     protected $fillable = [
-      'nombre_empresa', 'telefono', 'direccion_empresa', 'correo_electronico', 'users_id', 'roles_id', 'inventario_id'
+     'roles_id', 'users_id' ,'nombre_empresa', 'telefono', 'direccion_empresa', 'correo_electronico', 
     ];
 
     protected $dates = [
     'deleted_at'
-  ];
+    ];
 
     public function inventario()
     {

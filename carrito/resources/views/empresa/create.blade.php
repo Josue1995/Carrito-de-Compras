@@ -25,28 +25,29 @@
     	<input type="email" name="correo_electronico" id="correo_electronico" class="form-control" placeholder="Email de la empresa">
     </div>
     <div class="form-group">
-    	<label for="users_id"></label>
-        <select class="custom-select">
-            <option selected>Seleccione el dueño de la empresa</option>
-            @forelse($usuarios as $user)
-            <option required name="users_id" id="users_id">id: {{$user->id}} nombre: {{$user->name}}</option>
-            @empty
-            <option>No se encontraron roles</option>
-            @endforelse
-        </select>
-    </div>
+            <label for="users_id">Seleccione el usuario</label><br>
+            <select class="textWidth form-control" name="users_id" id="users_id" type="text">
+                <option disabled selected> -- seleccione una opcion -- </option>
+                @foreach($usuarios as $user)
+                  <option value="{{$user->id}}">
+                    {{$user->name}}
+                  </option>
+                @endforeach
+            </select>
+        </div>
+
 
     <div class="form-group">
-        <label for="roles_id"></label>
-        <select class="custom-select">
-            <option selected>Seleccione el rol</option>
-            @forelse($roles as $rol)
-            <option required name="roles_id" id="roles_id">id: {{$rol->id}} nombre: {{$rol->nombre_rol}}</option>
-            @empty
-            <option>No se encontraron roles</option>
-            @endforelse
-        </select>
-    </div>
+            <label for="roles_id">Seleccione el rol </label><br>
+            <select class="textWidth form-control" name="roles_id" id="users_id" type="text">
+                <option disabled selected> -- seleccione una opcion -- </option>
+                @foreach($roles as $rol)
+                  <option value="{{$rol->id}}">
+                    {{$rol->nombre_rol}}
+                  </option>
+                @endforeach
+            </select>
+        </div>
     <button type="submit" class="btn btn-primary">Guardar</button>
   </form>
 
