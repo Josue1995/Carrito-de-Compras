@@ -24,17 +24,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/rol', 'RolController');
 // Ruta para listar objertos borrados
 Route::get('/rolTrashed', 'RolController@trash');
-<<<<<<< HEAD
+
 //recupara objetos borrados
 Route::get('/rolTrashed/{id}', 'RolController@restore');
 
 //Ruta CRUD para empresa
 Route::resource('/empresa', 'EmpresaController');
- 
+
 //Ruta CRUD para usuarios
 Route::resource('/usuario', 'UserController');
 Route::get('/usuarioTrashed', 'UserController@trash');
-=======
 Route::get('/rolTrashed/{id}', 'RolController@restore');
 
 //Ruta para controlador de la clase DetalleArtículo
@@ -42,4 +41,3 @@ Route::get('/rolTrashed/{id}', 'RolController@restore');
 Route::resource('/detalle', 'DetalleArticuloController');
 Route::get('/detalleTrashed', 'DetalleArticuloController@trash');
 Route::get('/detalleTrashed/{id}', 'DetalleArticuloController@restore');
->>>>>>> 4b3d472fa6829a757d1a511f39dc31438f96078a
