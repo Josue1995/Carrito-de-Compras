@@ -8,7 +8,7 @@ class Empresa extends Model
 {
 
     protected $fillable = [
-      'nombre_empresa', 
+      'nombre_empresa', 'telefono', 'direccion_empresa', 'correo_electronico', 'users_id', 'roles_id', 'inventario_id'
     ];
 
     protected $dates = [
