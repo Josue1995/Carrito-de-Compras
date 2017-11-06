@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Inventario extends Model
 {
+    protected $fillable = [
+      'stock_min',
+      'stock_max',
+      'precioTotal'
+    ];
+
     protected $dates = [
     'deleted_at'
   ];

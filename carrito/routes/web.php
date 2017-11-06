@@ -41,3 +41,9 @@ Route::get('/rolTrashed/{id}', 'RolController@restore');
 Route::resource('/detalle', 'DetalleArticuloController');
 Route::get('/detalleTrashed', 'DetalleArticuloController@trash');
 Route::get('/detalleTrashed/{id}', 'DetalleArticuloController@restore');
+
+//Ruta para controlador de la clase Inventario
+
+Route::resource('/inventario', 'InventarioController');
+Route::get('/inventarioTrashed', 'InventarioController@trash');
+Route::get('/inventarioTrashed/{id}', 'InventarioController@restore');
