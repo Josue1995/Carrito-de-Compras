@@ -48,3 +48,9 @@ Route::get('/detalleTrashed/{id}', 'DetalleArticuloController@restore');
 Route::resource('/inventario', 'InventarioController');
 Route::get('/inventarioTrashed', 'InventarioController@trash');
 Route::get('/inventarioTrashed/{id}', 'InventarioController@restore');
+
+//Ruta para el controlador de la clase Cliente
+
+Route::resource('/cliente', 'ClienteController');
+Route::get('/clienteTrashed', 'ClienteController@trash');
+Route::get('/clienteTrashed/{id}', 'ClienteController@restore');

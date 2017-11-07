@@ -101,4 +101,11 @@ class InventarioController extends Controller
         $inv->restore();
         return redirect('/inventario');
     }
+
+    public function trash()
+    {
+        $inv = Inventario::onlyTrashed()->paginate(2);
+        return view('inventario.trash', compact('inv'));
+    }
+
 }

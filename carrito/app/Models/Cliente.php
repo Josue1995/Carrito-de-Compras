@@ -3,10 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Cliente extends Model
 {
-
+	use SoftDeletes;
+	protected $fillable = [
+		'nombres',
+		'apellidos',
+		'direccion',
+		'pais',
+		'ciudad',
+		'user_id',
+		'rol_id'
+	];
 
 	protected $dates = [
     'deleted_at'
@@ -19,4 +29,5 @@ class Cliente extends Model
   public function rol()
   {
     return $this->belongsTo('App\Models\Rol');
+	}
 }
