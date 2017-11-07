@@ -30,4 +30,9 @@ class Inventario extends Model
     {
       return $this->hasMany('App\Models\Subclasificacion');
     }
+
+    public function catalogo()
+    {
+      return $this->hasOne('App\Models\Catalogo')
+    }
 }
