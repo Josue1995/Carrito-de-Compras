@@ -116,4 +116,5 @@ class ClienteController extends Controller
         $clie->restore();
         return redirect('/cliente');
     }
+    
 }
