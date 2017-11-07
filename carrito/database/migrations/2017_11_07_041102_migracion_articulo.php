@@ -22,7 +22,7 @@ class MigracionArticulo extends Migration
             $table->integer('departamento_id')->unsigned();
             $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade');
             $table->integer('catalogos_id')->unsigned();
-            $table->foreign('references')->('id')->on('catalogos')->onDelete('cascade');
+            $table->foreign('catalogos_id')->references('id')->on('catalogos')->onDelete('cascade');
             $table->string('titulo_articulo');
             $table->double('precio', 15,2);
             $table->double('descuento',4,2);
