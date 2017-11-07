@@ -8,16 +8,22 @@ use App\Models\Rol;
 use App\User;
 use App\Models\Inventario;
 
+
 class EmpresaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        
+        $empresas =Empresa::join('rols', 'empresas.roles_id', '=', 'rols.id')
+    ->join('users', 'users.id', '=', 'empresas.users_id')
+    ->select('users.name', 'rols.nombre_rol', 'empresas.id', 'nombre_empresa', 'telefono', 'direccion_empresa' , 'correo_electronico', 'inventario_id')->paginate(2);
+        return view('empresa.index', compact('empresas'));
+    }
+
+    public function trash()
+    {
+        $trashedEmpresas = Empresa::onlyTrashed()->paginate(2);
+        return view('empresa.trash', compact('trashedEmpresas'));
     }
 
     public function create()
@@ -39,38 +45,28 @@ class EmpresaController extends Controller
         return redirect('/empresa');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+    
+        $empresas = Empresa::findOrFail($id);
+        $roles = Rol::where('nombre_rol', 'like', 'Empresa')->get();
+        $userSpecific = Empresa::join('users' ,'users.id','=', 'empresas.users_id')->select('users.name')->get();
+        $users = User::all();
+         return view('empresa.edit')->with('empresas', $empresas)->with('roles', $roles)->with('user', $users)->with('specific', $userSpecific);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $empresas = Empresa::findOrFail($id);
+
+        $empresas->update($request->all());
+
+        return redirect('/empresa');
     }
 
     /**
@@ -81,6 +77,15 @@ class EmpresaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Empresa::destroy($id);
+        return redirect('/empresa');
+    }
+
+    public function restore($id)
+    {
+        $roles = Rol::findOrFail($id);
+
+        $roles->restore();
+        return Redirect('/rol');
     }
 }

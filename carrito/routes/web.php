@@ -30,6 +30,7 @@ Route::get('/rolTrashed/{id}', 'RolController@restore');
 
 //Ruta CRUD para empresa
 Route::resource('/empresa', 'EmpresaController');
+Route::get('/empresaTrashed', 'EmpresaController@trash');
 
 //Ruta CRUD para usuarios
 Route::resource('/usuario', 'UserController');
