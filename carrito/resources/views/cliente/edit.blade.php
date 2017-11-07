@@ -31,27 +31,31 @@
      <input type="text" name="ciudad" id="ciudad" class="form-control" value="{{$cliente->ciudad}}">
     </div>
     <div class="form-group">
-            <label for="users_id">Seleccione el usuario</label><br>
+            <label aria-describedby="userHelp" for="users_id">Seleccione el usuario</label><br>
+            <small id="userHelp" class="form-text text-muted">
+            @foreach($specific as $s)
+             Su anterior usuario era {{$s->name }}
+            @endforeach
+            </small>
             <select class="textWidth form-control" name="users_id" id="users_id" type="text">
-                <option selected> -- Seleccione una opción -- </option>
-                @foreach($usuarios as $user)
-                  <option value="{{$user->id}}">
-                    {{$user->name}}
+                <option disabled="" selected> -- seleccione una opcion -- </option>
+                @foreach($user as $users)
+                  <option value="{{$users->id}}">
+                    {{$users->name}}
                   </option>
                 @endforeach
             </select>
-        </div>
+    </div>
     <div class="form-group">
             <label for="roles_id">Seleccione el rol </label><br>
             <select class="textWidth form-control" name="roles_id" id="roles_id" type="text">
-                <option selected> -- Seleccione una opción -- </option>
                 @foreach($roles as $rol)
-                  <option value="{{$rol->id}}">
+                  <option value="{{$rol->id}}" selected>
                     {{$rol->nombre_rol}}
                   </option>
                 @endforeach
             </select>
-        </div>
+    </div>
     <button type="submit" class="btn btn-primary">Guardar</button>
   </form>
 

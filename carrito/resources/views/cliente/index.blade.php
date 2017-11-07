@@ -31,8 +31,8 @@
         <td>{{$cli->direccion}}</td>
         <td>{{$cli->pais}}</td>
         <td>{{$cli->ciudad}}</td>
-        <td>{{$cli->users_id}}</td>
-        <td>{{$cli->roles_id}}</td>
+        <td>{{$cli->name}}</td>
+        <td>{{$cli->nombre_rol}}</td>
 				<td>
 					<form action="/Carrito-de-Compras/carrito/public/cliente/{{$cli->id}}" method="post">
 						{{csrf_field()}}

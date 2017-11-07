@@ -16,10 +16,10 @@ class ClienteController extends Controller
      */
     public function index()
     {
-      $cliente = Cliente::paginate(2);
-      $roles = Rol::where('nombre_rol', 'like', 'Cliente')->get();
-      $usuarios = User::all();
-      return view('cliente.index')->with('roles', $roles)->with('usuarios', $usuarios)->with('clientes', $cliente);
+      $clientes =Cliente::join('rols', 'clientes.roles_id', '=', 'rols.id')
+      ->join('users', 'users.id', '=', 'clientes.users_id')
+      ->select('users.name', 'rols.nombre_rol', 'clientes.id', 'clientes.nombres', 'clientes.apellidos', 'clientes.direccion' , 'clientes.pais', 'clientes.ciudad')->paginate(2);
+      return view('cliente.index', compact('clientes'));
     }
 
     /**
@@ -69,10 +69,11 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-      $clientes = Cliente::findOrFail($id);
+      $cliente = Cliente::findOrFail($id);
       $roles = Rol::where('nombre_rol', 'like', 'Cliente')->get();
-      $usuarios = User::all();
-      return view('cliente.edit')->with('roles', $roles)->with('usuarios', $usuarios)->with('cliente', $clientes);
+      $userSpecific = Cliente::join('users' ,'users.id','=', 'clientes.users_id')->select('users.name')->get();
+      $users = User::all();
+       return view('cliente.edit')->with('cliente', $cliente)->with('roles', $roles)->with('user', $users)->with('specific', $userSpecific);
     }
 
     /**
@@ -85,8 +86,9 @@ class ClienteController extends Controller
     public function update(Request $request, $id)
     {
 
-      $clie = Cliente::findOrFail($id);
-      $clie->update($request->all());
+      $clientes = Cliente::findOrFail($id);
+
+      $clientes->update($request->all());
 
       return redirect('/cliente');
     }
@@ -116,5 +118,5 @@ class ClienteController extends Controller
         $clie->restore();
         return redirect('/cliente');
     }
-    
+
 }
