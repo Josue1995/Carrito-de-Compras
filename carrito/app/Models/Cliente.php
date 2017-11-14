@@ -14,8 +14,8 @@ class Cliente extends Model
 		'direccion',
 		'pais',
 		'ciudad',
-		'user_id',
-		'rol_id'
+		'users_id',
+		'roles_id'
 	];
 
 	protected $dates = [

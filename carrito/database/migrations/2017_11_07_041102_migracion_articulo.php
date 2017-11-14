@@ -15,13 +15,13 @@ class MigracionArticulo extends Migration
     {
         Schema::create('articulos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('carrito_id')->unsigned();
+            $table->integer('carrito_id')->unsigned()->nullable();
             $table->foreign('carrito_id')->references('id')->on('carritos')->onDelete('cascade');
             $table->integer('detalleArticulo_id')->unsigned();
             $table->foreign('detalleArticulo_id')->references('id')->on('detallearticulos')->onDelete('cascade');
-            $table->integer('departamento_id')->unsigned();
+            $table->integer('departamento_id')->unsigned()->nullable();
             $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade');
-            $table->integer('catalogos_id')->unsigned();
+            $table->integer('catalogos_id')->unsigned()->nullable();
             $table->foreign('catalogos_id')->references('id')->on('catalogos')->onDelete('cascade');
             $table->string('titulo_articulo');
             $table->double('precio', 15,2);

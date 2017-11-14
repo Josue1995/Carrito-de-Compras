@@ -14,6 +14,7 @@ class EmpresaController extends Controller
 
     public function index()
     {
+
         $empresas =Empresa::join('rols', 'empresas.roles_id', '=', 'rols.id')
         ->join('users', 'users.id', '=', 'empresas.users_id')
         ->select('users.name', 'rols.nombre_rol', 'empresas.id', 'nombre_empresa', 'telefono', 'direccion_empresa' , 'correo_electronico', 'inventario_id')->paginate(2);
@@ -55,7 +56,7 @@ class EmpresaController extends Controller
 
         $empresas = Empresa::findOrFail($id);
         $roles = Rol::where('nombre_rol', 'like', 'Empresa')->get();
-        $userSpecific = Empresa::join('users' ,'users.id','=', 'empresas.users_id')->select('users.name')->get();
+        $userSpecific = User::with('empresa')->where('id', $empresas->users_id)->get();
         $users = User::all();
          return view('empresa.edit')->with('empresas', $empresas)->with('roles', $roles)->with('user', $users)->with('specific', $userSpecific);
     }

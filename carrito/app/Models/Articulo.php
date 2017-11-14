@@ -9,6 +9,15 @@ class Articulo extends Model
 {
   use SoftDeletes;
 
+  protected $fillable = [
+    'titulo_articulo',
+    'precio',
+    'descuento',
+    'existencias',
+    'imagen_articulo',
+    'detalleArticulo_id'
+  ];
+
   protected $dates = [
 
     'deleted_at'

@@ -29,7 +29,7 @@
             <label aria-describedby="userHelp" for="users_id">Seleccione el usuario</label><br>
             <small id="userHelp" class="form-text text-muted">
             @foreach($specific as $s)
-             Su anterior usuario era {{$s->name }}
+             Su anterior usuario era {{$s->name}}
             @endforeach
             </small>
             <select class="textWidth form-control" name="users_id" id="users_id" type="text">

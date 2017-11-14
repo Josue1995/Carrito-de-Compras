@@ -25,11 +25,12 @@ class MigracionSubclasificacion extends Migration
       });
         Schema::create('articulos_subclasificacions',  function(Blueprint $table){
         $table->increments('id');
-        $table->integer('articulo_id')->unsigned();
-        $table->integer('subclasificacion_id')->unsigned();
+        $table->integer('articulo_id')->unsigned()->nullable();
+        $table->integer('subclasificacion_id')->unsigned()->nullable();
         $table->foreign('articulo_id')->references('id')->on('articulos');
         $table->foreign('subclasificacion_id')->references('id')->on('subclasificacions');
         $table->timestamps();
+
     });
     }
 
@@ -41,5 +42,6 @@ class MigracionSubclasificacion extends Migration
     public function down()
     {
         Schema::dropIfExists('subclasificacions');
+        Schema::dropIfExists('articulos_subclasificacions');
     }
 }

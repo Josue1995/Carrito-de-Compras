@@ -5,7 +5,7 @@
 @section('titulo2','clientes')
 
 @section('contenido')
-  <form action="/Carrito-de-Compras/carrito/public/cliente/{{ $cliente->id}}" method="post">
+  <form action="/Carrito-de-Compras/carrito/public/cliente/{{ $cliente->id }}" method="post">
     {{ method_field('PUT') }}
     {{csrf_field()}}
     <div class="form-group">

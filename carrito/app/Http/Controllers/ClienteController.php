@@ -71,7 +71,7 @@ class ClienteController extends Controller
     {
       $cliente = Cliente::findOrFail($id);
       $roles = Rol::where('nombre_rol', 'like', 'Cliente')->get();
-      $userSpecific = Cliente::join('users' ,'users.id','=', 'clientes.users_id')->select('users.name')->get();
+      $userSpecific = User::with('cliente')->where('id', $cliente->users_id)->get();
       $users = User::all();
        return view('cliente.edit')->with('cliente', $cliente)->with('roles', $roles)->with('user', $users)->with('specific', $userSpecific);
     }

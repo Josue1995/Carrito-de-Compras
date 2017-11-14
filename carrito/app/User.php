@@ -14,6 +14,15 @@ class User extends Authenticatable
     {
       return $this->hasOne('App\Models\Carrito');
     }
+    public function empresa()
+    {
+        return $this->belongsTo('App\Models\Empresa');
+    }
+
+    public function cliente()
+    {
+        return $this->belongsTo('App\Models\Cliente');
+    }
     /**
      * The attributes that are mass assignable.
      *
