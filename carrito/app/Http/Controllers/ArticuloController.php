@@ -45,15 +45,14 @@ class ArticuloController extends Controller
         $this -> validate($request, [
             'imagen_articulo' => 'required|image'
             ]);
-        $create_image = Image::make($request->file('imagen_articulo'))->resize(144,144);
         
-        /*
         $extension = $request->file('imagen_articulo')->getClientOriginalExtension();
-        $file_name = $request->get('titulo_articulo') . '.' . $extension;
-        Image::make($request->file('imagen_articulo'))->resize(144,144)->save('img/articulos/' . $file_name );
-        $articulo->imagen_articulo = $extension;
-        */
-        $articulo->imagen_articulo = base64_encode($create_image);
+        $nombre = $request->file('imagen_articulo')->getClientOriginalName();
+        $file_name = $nombre. '.' . $extension;
+        Image::make($request->file('imagen_articulo'))->resize(144,144)->save('imagenes/articulos/' . $file_name );
+        $articulo->imagen_articulo = $file_name;
+        
+        
         $articulo->save();
 
         return redirect('/articulo');

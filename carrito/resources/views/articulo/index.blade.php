@@ -6,10 +6,11 @@
 
 @section('contenido')
 	@parent
+	<a href="articulo/create" type="button" class="btn btn-secondary btn-sm " >Crear Articulo</a>
 	<table class="table">
 		<thead class="thead-dark">
 			<tr>
-				<th scope="col">Imagen del articulo</th>
+				<th scope="col">Imagen del articulo</th>				
 				<th scope="col">id</th>
 				<th scope="col">Nombre del articulo</th>
 				<th scope="col">Descripcion del articulo</th>
@@ -24,16 +25,16 @@
 		<tbody>
 			@forelse($articulos as $a)
 			<tr>
-				<td>{{$a->imagen_articulo}}</td>
+				<td><img src="imagenes/articulos/{{$a->imagen_articulo}}"></td>
 				<td>{{$a->id}}</td>
 				<td>{{$a->nombre_articulo}}</td>
         		<td>{{$a->descripcion_articulo}}</td>
-        		<td>{{$a->titulo_articulo}}</td>
         		<td>{{$a->precio}}</td>
         		<td>{{$a->descuento}}</td>
         		<td>{{$a->existencias}}</td>
+        		<td>{{$a->titulo_articulo}}</td>
 				<td>
-					<form action="/Carrito-de-Compras/carrito/public/cliente/{{$cli->id}}" method="post">
+					<form action="/Carrito-de-Compras/carrito/public/cliente/{{$a->id}}" method="post">
 						{{csrf_field()}}
 						{{method_field('DELETE')}}
 						<button class="btn btn-danger btn-sm">Eliminar</button>

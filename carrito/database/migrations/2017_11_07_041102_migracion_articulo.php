@@ -27,7 +27,7 @@ class MigracionArticulo extends Migration
             $table->double('precio', 15,2);
             $table->double('descuento',4,2);
             $table->bigInteger('existencias');
-            $table->binary('imagen_articulo');
+            $table->text('imagen_articulo');
             $table->softDeletes();
             $table->timestamps();
         });
