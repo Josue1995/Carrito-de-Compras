@@ -17,7 +17,6 @@
          <th scope="col">País</th>
          <th scope="col">Ciudad</th>
          <th scope="col">Usuario</th>
-         <th scope="col">Rol</th>
          <th scope="col">Acciones</th>
 			</tr>
 
@@ -32,7 +31,7 @@
         <td>{{$cli->pais}}</td>
         <td>{{$cli->ciudad}}</td>
         <td>{{$cli->name}}</td>
-        <td>{{$cli->nombre_rol}}</td>
+        
 				<td>
 					<form action="/Carrito-de-Compras/carrito/public/cliente/{{$cli->id}}" method="post">
 						{{csrf_field()}}

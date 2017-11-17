@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Empresa;
-use App\Models\Rol;
+use Illuminate\Support\Facades\Auth;
+
 use App\User;
 use App\Models\Inventario;
 
@@ -15,9 +16,8 @@ class EmpresaController extends Controller
     public function index()
     {
 
-        $empresas =Empresa::join('rols', 'empresas.roles_id', '=', 'rols.id')
-        ->join('users', 'users.id', '=', 'empresas.users_id')
-        ->select('users.name', 'rols.nombre_rol', 'empresas.id', 'nombre_empresa', 'telefono', 'direccion_empresa' , 'correo_electronico', 'inventario_id')->paginate(2);
+        $empresas =Empresa::join('users', 'users.id', '=', 'empresas.users_id')
+        ->select('users.name', 'empresas.id', 'nombre_empresa', 'telefono', 'direccion_empresa' , 'correo_electronico', 'inventario_id')->paginate(2);
         return view('empresa.index', compact('empresas'));
     }
 
@@ -29,9 +29,9 @@ class EmpresaController extends Controller
 
     public function create()
     {
-        $roles = Rol::where('nombre_rol', 'like', 'Empresa')->get();
+        
         $usuarios = User::all();
-        return view('empresa.create')->with('roles', $roles)->with('usuarios', $usuarios);
+        return view('empresa.create')->with('usuarios', $usuarios);
     }
 
 
@@ -40,9 +40,11 @@ class EmpresaController extends Controller
         //Empresa::create($request->all());
         $empresa = new Empresa($request->all());
         $empresa->users_id = $request->get('users_id');
-        $empresa->roles_id = $request->get('roles_id');
+        
         $empresa->save();
-
+        if(Auth::user()->rol=='Empresa'){
+            return redirect('/home');
+        }
         return redirect('/empresa');
     }
 
@@ -55,10 +57,9 @@ class EmpresaController extends Controller
     {
 
         $empresas = Empresa::findOrFail($id);
-        $roles = Rol::where('nombre_rol', 'like', 'Empresa')->get();
         $userSpecific = User::with('empresa')->where('id', $empresas->users_id)->get();
         $users = User::all();
-         return view('empresa.edit')->with('empresas', $empresas)->with('roles', $roles)->with('user', $users)->with('specific', $userSpecific);
+         return view('empresa.edit')->with('empresas', $empresas)->with('user', $users)->with('specific', $userSpecific);
     }
 
     public function update(Request $request, $id)
@@ -82,11 +83,4 @@ class EmpresaController extends Controller
         return redirect('/empresa');
     }
 
-    public function restore($id)
-    {
-        $roles = Rol::findOrFail($id);
-
-        $roles->restore();
-        return Redirect('/rol');
-    }
 }

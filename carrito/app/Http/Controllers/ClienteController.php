@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Rol;
 use App\Models\Cliente;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class ClienteController extends Controller
 {
@@ -16,9 +16,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-      $clientes =Cliente::join('rols', 'clientes.roles_id', '=', 'rols.id')
-      ->join('users', 'users.id', '=', 'clientes.users_id')
-      ->select('users.name', 'rols.nombre_rol', 'clientes.id', 'clientes.nombres', 'clientes.apellidos', 'clientes.direccion' , 'clientes.pais', 'clientes.ciudad')->paginate(2);
+      $clientes =Cliente::join('users', 'users.id', '=', 'clientes.users_id')
+      ->select('users.name', 'clientes.id', 'clientes.nombres', 'clientes.apellidos', 'clientes.direccion' , 'clientes.pais', 'clientes.ciudad')->paginate(2);
       return view('cliente.index', compact('clientes'));
     }
 
@@ -29,9 +28,9 @@ class ClienteController extends Controller
      */
     public function create()
     {
-      $roles = Rol::where('nombre_rol', 'like', 'Cliente')->get();
+      
       $usuarios = User::all();
-      return view('cliente.create')->with('roles', $roles)->with('usuarios', $usuarios);
+      return view('cliente.create')->with('usuarios', $usuarios);
     }
 
     /**
@@ -44,9 +43,11 @@ class ClienteController extends Controller
     {
       $cli = new Cliente($request->all());
       $cli->users_id = $request->get('users_id');
-      $cli->roles_id = $request->get('roles_id');
+      
       $cli->save();
-
+      if(Auth::user()->rol == 'Cliente'){
+        return redirect('/home');
+      }
       return redirect('/cliente');
     }
 
@@ -70,10 +71,10 @@ class ClienteController extends Controller
     public function edit($id)
     {
       $cliente = Cliente::findOrFail($id);
-      $roles = Rol::where('nombre_rol', 'like', 'Cliente')->get();
+      
       $userSpecific = User::with('cliente')->where('id', $cliente->users_id)->get();
       $users = User::all();
-       return view('cliente.edit')->with('cliente', $cliente)->with('roles', $roles)->with('user', $users)->with('specific', $userSpecific);
+       return view('cliente.edit')->with('cliente', $cliente)->with('user', $users)->with('specific', $userSpecific);
     }
 
     /**

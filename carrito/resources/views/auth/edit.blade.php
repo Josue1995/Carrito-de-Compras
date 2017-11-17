@@ -19,13 +19,6 @@
       <input type="email" name="email" value="{{$user->email}}" class="form-control" id="email" aria-describedby="rolHelp" placeholder="Editar el correo del usuario" required>
       <small id="rolHelp" class="form-text text-muted">Editar el correo del usuario.</small>
     </div>
-
-
-    <div class="form-group">
-      <label for="password">Contraseña</label>
-      <input type="text" name="password" value="{{$user->password}}" class="form-control" id="password" aria-describedby="rolHelp" placeholder="Editarar la Contraseña de usuario" required>
-      <small id="rolHelp" class="form-text text-muted">Editar la contraseña del usuario.</small>
-    </div>
     <button type="submit" class="btn btn-primary">Guardar</button>
   </form>
 @endsection

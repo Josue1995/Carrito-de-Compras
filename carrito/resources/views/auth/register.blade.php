@@ -25,6 +25,25 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('rol') ? ' has-error' : '' }}">
+                            <label for="rol" class="col-md-4 control-label">Rol</label>
+
+                            <div class="col-md-6">
+                                <select class="textWidth form-control" name="rol" id="rol" type="text">
+                                    <option disabled selected> -- Seleccione una opción -- </option>
+                                    <option>Empresa</option>
+                                    <option>Cliente</option>
+                                </select>
+
+                                @if ($errors->has('rol'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('rol') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 

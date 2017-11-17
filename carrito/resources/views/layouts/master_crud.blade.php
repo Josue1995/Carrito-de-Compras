@@ -6,7 +6,7 @@
     <meta name="author" content="grupo #13">
     <meta name="description" content="">
     <title > Gestionar @yield('titulo1')</title>
-    <link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }}>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
   </head>
   <body>
     <div class="container-fluid">

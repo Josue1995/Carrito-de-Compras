@@ -42,17 +42,6 @@
             </select>
     </div>
 
-
-    <div class="form-group">
-            <label for="roles_id">Seleccione el rol </label><br>
-            <select class="textWidth form-control" name="roles_id" id="roles_id" type="text">
-                @foreach($roles as $rol)
-                  <option value="{{$rol->id}}" selected>
-                    {{$rol->nombre_rol}}
-                  </option>
-                @endforeach
-            </select>
-    </div>
     <button type="submit" class="btn btn-primary">Guardar</button>
   </form>
 

@@ -64,7 +64,6 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-
         return view('auth.edit', compact('user'));
     }
 
@@ -78,7 +77,6 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $users = User::findOrFail($id);
-
         $users->update($request->all());
 
         return redirect('/usuario');

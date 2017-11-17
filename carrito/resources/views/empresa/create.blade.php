@@ -24,6 +24,18 @@
     	<label for="correo_electronico">Email</label>
     	<input type="email" name="correo_electronico" id="correo_electronico" class="form-control" placeholder="Email de la empresa">
     </div>
+
+    @if(Auth::user()->rol == 'Empresa')
+        <div class="form-group">
+            <label for="users_id">Su usuario</label>
+            <select class="textWidth form-control" name="users_id" id="users_id" type="text">
+                <option disabled selected>--Seleccione su usuario--</option>
+                <option value="{{Auth::user()->id}}">{{Auth::user()->name}}</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>        
+
+    @else
     <div class="form-group">
             <label for="users_id">Seleccione el usuario</label><br>
             <select class="textWidth form-control" name="users_id" id="users_id" type="text">
@@ -36,19 +48,8 @@
             </select>
         </div>
 
-
-    <div class="form-group">
-            <label for="roles_id">Seleccione el rol </label><br>
-            <select class="textWidth form-control" name="roles_id" id="users_id" type="text">
-                <option disabled selected> -- seleccione una opcion -- </option>
-                @foreach($roles as $rol)
-                  <option value="{{$rol->id}}">
-                    {{$rol->nombre_rol}}
-                  </option>
-                @endforeach
-            </select>
-        </div>
     <button type="submit" class="btn btn-primary">Guardar</button>
+    @endif
   </form>
 
 @endsection

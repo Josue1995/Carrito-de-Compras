@@ -25,6 +25,15 @@
       <input type="password" name="password" class="form-control" id="password" aria-describedby="rolHelp" placeholder="Ingrese la Contraseña de usuario" required>
       <small id="rolHelp" class="form-text text-muted">Ingrese la contraseña del usuario.</small>
     </div>
+
+    <div class="form-group">
+      <label for="rol">Rol</label>
+      <select class="textWidth form-control" name="rol" id="rol" type="text">
+          <option disabled selected> -- Seleccione una opción -- </option>
+          <option>Empresa</option>
+          <option>Cliente</option>
+     </select>
+    </div>
     <button type="submit" class="btn btn-primary">Guardar</button>
   </form>
 

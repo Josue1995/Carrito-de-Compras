@@ -16,7 +16,7 @@
          <th scope="col">País</th>
          <th scope="col">Ciudad</th>
          <th scope="col">Usuario</th>
-         <th scope="col">Rol</th>
+         
          <th scope="col">Acciones</th>
 			</tr>
 
@@ -31,7 +31,7 @@
         <td>{{$c->pais}}</td>
         <td>{{$c->ciudad}}</td>
         <td>{{$c->users_id}}</td>
-        <td>{{$c->roles_id}}</td>
+        
         <td>
 					<form action="/Carrito-de-Compras/carrito/public/clienteTrashed/{{$c->id}}" method="post">
 						{{csrf_field()}}

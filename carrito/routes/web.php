@@ -15,18 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/rol_choose', function(){
+	return view('rol.elegir');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-//Ruta para controlador de la clase ROL
-
-Route::resource('/rol', 'RolController');
-// Ruta para listar objertos borrados
-Route::get('/rolTrashed', 'RolController@trash');
-
-//recupara objetos borrados
-Route::get('/rolTrashed/{id}', 'RolController@restore');
 
 //Ruta CRUD para empresa
 Route::resource('/empresa', 'EmpresaController');

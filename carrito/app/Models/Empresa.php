@@ -10,7 +10,7 @@ class Empresa extends Model
     use SoftDeletes;
 
     protected $fillable = [
-     'roles_id', 'users_id' ,'nombre_empresa', 'telefono', 'direccion_empresa', 'correo_electronico', 
+       'users_id' ,'nombre_empresa', 'telefono', 'direccion_empresa', 'correo_electronico', 
     ];
 
     protected $dates = [
@@ -25,8 +25,5 @@ class Empresa extends Model
     {
       return $this->hasOne('App\User');
     }
-    public function rol()
-    {
-      return $this->belongsTo('App\Models\Rol');
-    }
+    
 }

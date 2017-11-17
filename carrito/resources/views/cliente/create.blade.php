@@ -29,6 +29,20 @@
       <label for="ciudad">Ciudad</label>
     	<input type="text" name="ciudad" id="ciudad" class="form-control" placeholder="Ciudad del cliente">
     </div>
+    @if(Auth::user()->rol == 'Cliente')
+      <div class="form-group">
+            <label for="users_id">Seleccione el usuario</label><br>
+            <select class="textWidth form-control" name="users_id" id="users_id" type="text">
+                <option disabled selected> -- Seleccione una opción -- </option>
+                  <option value="{{Auth::user()->id}}">
+                    {{Auth::user()->name}}
+                  </option>
+            </select>
+        </div>
+    
+    <button type="submit" class="btn btn-primary">Guardar</button>
+
+    @else
     <div class="form-group">
             <label for="users_id">Seleccione el usuario</label><br>
             <select class="textWidth form-control" name="users_id" id="users_id" type="text">
@@ -40,18 +54,9 @@
                 @endforeach
             </select>
         </div>
-    <div class="form-group">
-            <label for="roles_id">Seleccione el rol </label><br>
-            <select class="textWidth form-control" name="roles_id" id="roles_id" type="text">
-                <option disabled selected> -- Seleccione una opción -- </option>
-                @foreach($roles as $rol)
-                  <option value="{{$rol->id}}">
-                    {{$rol->nombre_rol}}
-                  </option>
-                @endforeach
-            </select>
-        </div>
+    
     <button type="submit" class="btn btn-primary">Guardar</button>
+    @endif
   </form>
-
+   
 @endsection

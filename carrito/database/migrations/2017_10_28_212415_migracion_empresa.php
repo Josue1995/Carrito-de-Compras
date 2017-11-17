@@ -16,13 +16,13 @@ class MigracionEmpresa extends Migration
         Schema::create('empresas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('inventario_id')->nullable();
-            $table->integer('roles_id')->unsigned();
+            
             $table->integer('users_id');
             $table->string('nombre_empresa');
             $table->string('telefono');
             $table->string('direccion_empresa');
             $table->string('correo_electronico');
-            $table->foreign('roles_id')->references('id')->on('rols')->onDelete('cascade');
+            
             $table->softDeletes();
             $table->timestamps();
         });

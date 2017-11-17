@@ -15,7 +15,6 @@ class Cliente extends Model
 		'pais',
 		'ciudad',
 		'users_id',
-		'roles_id'
 	];
 
 	protected $dates = [
@@ -26,8 +25,5 @@ class Cliente extends Model
   {
     return $this->hasOne('App\User');
   }
-  public function rol()
-  {
-    return $this->belongsTo('App\Models\Rol');
-	}
+ 
 }
