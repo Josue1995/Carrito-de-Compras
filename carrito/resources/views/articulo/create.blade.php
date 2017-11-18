@@ -33,7 +33,7 @@
     	<input type="file" name="imagen_articulo" id="imagen_articulo" class="form-control" required>
     </div>
     <div class="form-group">
-            <label for="detallearticulo_id">Seleccione el articulo</label><br>
+            <label for="detallearticulo_id">Detalle articulo</label><br>
             <select class="textWidth form-control" name="detallearticulo_id" id="detallearticulo_id" type="text">
                 <option disabled selected> -- Seleccione una opción -- </option>
                 @foreach($detalle as $detail)
@@ -42,7 +42,17 @@
                   </option>
                 @endforeach
             </select>
-        </div>
+      </div>
+      <div class="form-group">
+            <label for="catalogo_id">Su catalogo</label><br>
+            <select class="textWidth form-control" name="catalogo_id" id="catalogo_id" type="text">
+                <option disabled selected> -- Seleccione una opción -- </option>
+                <option value="{{Auth::user()->empresa->catalogo->id}}">
+                    {{Auth::user()->empresa->catalogo->id}}
+                </option>
+                
+            </select>
+      </div>
     <button type="submit" class="btn btn-primary">Guardar</button>
   </form>
   

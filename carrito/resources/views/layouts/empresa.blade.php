@@ -96,9 +96,7 @@
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="empresa/{{Auth::user()->empresa->id}}/edit">
         @if(Auth::check())
-          @foreach(Auth::user()->empresa() as $s)
-            <p>{{$s->nombre_empresa}}</p>
-          @endforeach
+            <p>{{ Auth::user()->empresa->nombre_empresa}}</p>
         @else
           {{ Auth::user()->name }}
         @endif
@@ -110,10 +108,10 @@
           <ul class="navbar-nav ml-auto">
           
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{ url('/') }}">{{ config('app.name', 'Pacman´s Sons') }}</a>
+              <a class="nav-link js-scroll-trigger" href="catalogo">Ver Mi Catalogo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{ url('/') }}">Services</a>
+              <a class="nav-link js-scroll-trigger" href="{{ url('/') }}">Inventario</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>

@@ -5,9 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Empresa;
 use Illuminate\Support\Facades\Auth;
-
 use App\Models\User;
-use App\Models\Inventario;
+
 
 
 class EmpresaController extends Controller
@@ -45,10 +44,9 @@ class EmpresaController extends Controller
         //Empresa::create($request->all());
         $empresa = new Empresa($request->all());
         $empresa->user_id = $request->get('user_id');
-        
         $empresa->save();
         if(Auth::user()->rol=='Empresa'){
-            return redirect('/home');
+            return redirect('/catalogo/create');
         }
         return redirect('/empresa');
     }

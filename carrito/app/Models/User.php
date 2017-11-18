@@ -18,7 +18,7 @@ class User extends Authenticatable
     }
     public function empresa()
     {
-        return $this->belongsTo('App\Models\Empresa', 'user_id');
+        return $this->hasOne('App\Models\Empresa');
     }
     public function cliente()
     {

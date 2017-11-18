@@ -11,7 +11,6 @@
 		<thead class="thead-dark">
 			<tr>
 				<th scope="col">id</th>
-				<th scope="col">id_inventario</th>
          		<th scope="col">Usuario</th>
          		<th scope="col">Nombre empresa</th>
          		<th scope="col">Telefono</th>
@@ -25,7 +24,6 @@
 			@forelse($empresas as $e)
 			<tr>
 				<td>{{$e->id}}</td>
-				<td>{{$e->id_inventario}}</td>
          		<td>{{$e->name}}</td>
          		<td>{{$e->nombre_empresa}}
          		<td>{{$e->telefono}}</td>

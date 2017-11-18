@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/rol_choose', function(){
-	return view('rol.elegir');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -30,7 +26,7 @@ Route::get('/empresaTrashed', 'EmpresaController@trash');
 //Ruta CRUD para usuarios
 Route::resource('/usuario', 'UserController');
 Route::get('/usuarioTrashed', 'UserController@trash');
-Route::get('/rolTrashed/{id}', 'RolController@restore');
+
 
 //Ruta para controlador de la clase DetalleArtículo
 

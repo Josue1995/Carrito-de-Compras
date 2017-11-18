@@ -15,7 +15,8 @@ class Articulo extends Model
     'descuento',
     'existencias',
     'imagen_articulo',
-    'detalleArticulo_id'
+    'detalleArticulo_id',
+    'catalogo_id'
   ];
 
   protected $dates = [
@@ -42,6 +43,6 @@ class Articulo extends Model
 
     public function catalogo()
     {
-      return $this->belongsTo('App\Models\Catalago');
+      return $this->belongsTo('App\Models\Catalogo');
     }
 }

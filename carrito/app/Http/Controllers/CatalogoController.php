@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Catalogo;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Articulo;
 
 class CatalogoController extends Controller
 {
@@ -13,7 +16,9 @@ class CatalogoController extends Controller
      */
     public function index()
     {
-        //
+
+        $articulo = Articulo::with('catalogo')->where('catalogo_id', Auth::user()->empresa->catalogo->id)->paginate(2);
+        return view('catalogo.index', compact('articulo'));
     }
 
     /**
@@ -34,7 +39,14 @@ class CatalogoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $catalogo = new Catalogo($request->all());
+        $catalogo->empresa_id = $request->get('empresa_id');
+        $catalogo->save();
+        if(Auth::user()->rol == 'Empresa'){
+            return redirect('/home');
+        }
+        return redirect('home');
+        
     }
 
     /**

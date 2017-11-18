@@ -7,6 +7,7 @@ use App\Models\Articulo;
 use App\Models\Detallearticulo;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Auth;
 
 class ArticuloController extends Controller
 {
@@ -54,6 +55,9 @@ class ArticuloController extends Controller
         
         
         $articulo->save();
+        if(Auth::user()->rol == 'Empresa'){
+            return redirect('/catalogo');
+        }
 
         return redirect('/articulo');
     }

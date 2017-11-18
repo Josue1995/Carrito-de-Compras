@@ -15,10 +15,6 @@ class CreateEmpresa extends Migration
     {
         Schema::create('empresas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('inventario_id')->nullable();
-            $table->foreign('inventario_id')->references('id')->on('inventarios')->onDelete('cascade');
-            $table->integer('catalogo_id')->nullable();
-            $table->foreign('catalogo_id')->references('id')->on('catalogos')->onDelete('cascade');
             $table->integer('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('nombre_empresa');
