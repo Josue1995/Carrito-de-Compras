@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\User;
 
 class Cliente extends Model
 {
@@ -14,7 +15,7 @@ class Cliente extends Model
 		'direccion',
 		'pais',
 		'ciudad',
-		'users_id',
+		'user_id',
 	];
 
 	protected $dates = [
@@ -23,7 +24,7 @@ class Cliente extends Model
 
   public function user()
   {
-    return $this->hasOne('App\User');
+    return $this->hasOne('App\Models\User');
   }
  
 }

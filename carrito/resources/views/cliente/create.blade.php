@@ -31,8 +31,8 @@
     </div>
     @if(Auth::user()->rol == 'Cliente')
       <div class="form-group">
-            <label for="users_id">Seleccione el usuario</label><br>
-            <select class="textWidth form-control" name="users_id" id="users_id" type="text">
+            <label for="user_id">Seleccione el usuario</label><br>
+            <select class="textWidth form-control" name="user_id" id="user_id" type="text">
                 <option disabled selected> -- Seleccione una opción -- </option>
                   <option value="{{Auth::user()->id}}">
                     {{Auth::user()->name}}
@@ -44,8 +44,8 @@
 
     @else
     <div class="form-group">
-            <label for="users_id">Seleccione el usuario</label><br>
-            <select class="textWidth form-control" name="users_id" id="users_id" type="text">
+            <label for="user_id">Seleccione el usuario</label><br>
+            <select class="textWidth form-control" name="user_id" id="user_id" type="text">
                 <option disabled selected> -- Seleccione una opción -- </option>
                 @foreach($usuarios as $user)
                   <option value="{{$user->id}}">

@@ -6,17 +6,22 @@ use Illuminate\Http\Request;
 use App\Models\Empresa;
 use Illuminate\Support\Facades\Auth;
 
-use App\User;
+use App\Models\User;
 use App\Models\Inventario;
 
 
 class EmpresaController extends Controller
-{
+{   
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
 
-        $empresas =Empresa::join('users', 'users.id', '=', 'empresas.users_id')
+        $empresas =Empresa::join('users', 'users.id', '=', 'empresas.user_id')
         ->select('users.name', 'empresas.id', 'nombre_empresa', 'telefono', 'direccion_empresa' , 'correo_electronico', 'inventario_id')->paginate(2);
         return view('empresa.index', compact('empresas'));
     }
@@ -39,7 +44,7 @@ class EmpresaController extends Controller
     {
         //Empresa::create($request->all());
         $empresa = new Empresa($request->all());
-        $empresa->users_id = $request->get('users_id');
+        $empresa->user_id = $request->get('user_id');
         
         $empresa->save();
         if(Auth::user()->rol=='Empresa'){
@@ -57,7 +62,7 @@ class EmpresaController extends Controller
     {
 
         $empresas = Empresa::findOrFail($id);
-        $userSpecific = User::with('empresa')->where('id', $empresas->users_id)->get();
+        $userSpecific = User::with('empresa')->where('id', $empresas->user_id)->get();
         $users = User::all();
          return view('empresa.edit')->with('empresas', $empresas)->with('user', $users)->with('specific', $userSpecific);
     }

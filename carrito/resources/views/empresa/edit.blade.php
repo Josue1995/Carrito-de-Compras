@@ -26,13 +26,13 @@
       <input type="email" name="correo_electronico" id="correo_electronico" class="form-control" value = "{{$empresas->correo_electronico}}" required>
     </div>
     <div class="form-group">
-            <label aria-describedby="userHelp" for="users_id">Seleccione el usuario</label><br>
+            <label aria-describedby="userHelp" for="user_id">Seleccione el usuario</label><br>
             <small id="userHelp" class="form-text text-muted">
             @foreach($specific as $s)
              Su anterior usuario era {{$s->name}}
             @endforeach
             </small>
-            <select class="textWidth form-control" name="users_id" id="users_id" type="text">
+            <select class="textWidth form-control" name="user_id" id="user_id" type="text">
                 <option disabled="" selected> -- seleccione una opcion -- </option>
                 @foreach($user as $users)
                   <option value="{{$users->id}}">

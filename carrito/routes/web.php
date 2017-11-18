@@ -52,3 +52,6 @@ Route::get('/clienteTrashed/{id}', 'ClienteController@restore');
 
 //Rutas para el articulo
 Route::resource('/articulo', 'ArticuloController');
+
+//Rutas para el catalogo
+Route::resource('/catalogo', 'CatalogoController');

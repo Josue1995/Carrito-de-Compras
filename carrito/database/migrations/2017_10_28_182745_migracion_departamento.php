@@ -15,7 +15,7 @@ class MigracionDepartamento extends Migration
     {
         Schema::create('departamentos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('inventario_id')->unsigned();
+            $table->integer('inventario_id');
             $table->string('nombre_departamento');
             $table->foreign('inventario_id')->references('id')->on('inventarios')->onDelete('cascade');
             $table->softDeletes();

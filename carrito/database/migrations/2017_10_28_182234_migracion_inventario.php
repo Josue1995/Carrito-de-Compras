@@ -18,7 +18,6 @@ class MigracionInventario extends Migration
             $table->smallInteger('stock_min');
             $table->bigInteger('stock_max');
             $table->double('precioTotal',15,2);
-            $table->integer('catalogos_id');
             $table->softDeletes();
             $table->timestamps();
         });

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-namespace App;
+
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,6 +19,6 @@ class Carrito extends Model
     }
     public function usuario()
     {
-      return $this->belongsTo('App\User');
+      return $this->hasOne('App\Models\User');
     }
 }

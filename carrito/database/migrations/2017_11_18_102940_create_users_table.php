@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('carritos_id')->nullable();
+            $table->foreign('carritos_id')->references('id')->on('carritos')->onDelete('cascade');
             $table->string('rol');
             $table->string('email')->unique();
             $table->string('password');

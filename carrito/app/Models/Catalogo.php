@@ -14,8 +14,10 @@ class Catalogo extends Model
     	return $this->hasMany('App\Models\Articulo');
     }
 
-    public function inventario()
+    public function empresa()
     {
-    	return $this->belongsTo('App\Models\Inventario');
+    	return $this->belongsTo('App\Models\Empresa');
     }
+
+    
 }

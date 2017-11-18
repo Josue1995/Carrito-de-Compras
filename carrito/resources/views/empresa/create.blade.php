@@ -27,8 +27,8 @@
 
     @if(Auth::user()->rol == 'Empresa')
         <div class="form-group">
-            <label for="users_id">Su usuario</label>
-            <select class="textWidth form-control" name="users_id" id="users_id" type="text">
+            <label for="user_id">Su usuario</label>
+            <select class="textWidth form-control" name="user_id" id="user_id" type="text">
                 <option disabled selected>--Seleccione su usuario--</option>
                 <option value="{{Auth::user()->id}}">{{Auth::user()->name}}</option>
             </select>
@@ -37,8 +37,8 @@
 
     @else
     <div class="form-group">
-            <label for="users_id">Seleccione el usuario</label><br>
-            <select class="textWidth form-control" name="users_id" id="users_id" type="text">
+            <label for="user_id">Seleccione el usuario</label><br>
+            <select class="textWidth form-control" name="user_id" id="user_id" type="text">
                 <option disabled selected> -- seleccione una opcion -- </option>
                 @foreach($usuarios as $user)
                   <option value="{{$user->id}}">

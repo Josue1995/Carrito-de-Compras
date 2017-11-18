@@ -33,8 +33,8 @@
     	<input type="file" name="imagen_articulo" id="imagen_articulo" class="form-control" required>
     </div>
     <div class="form-group">
-            <label for="detalleArticulo_id">Seleccione el articulo</label><br>
-            <select class="textWidth form-control" name="detalleArticulo_id" id="detalleArticulo_id" type="text">
+            <label for="detallearticulo_id">Seleccione el articulo</label><br>
+            <select class="textWidth form-control" name="detallearticulo_id" id="detallearticulo_id" type="text">
                 <option disabled selected> -- Seleccione una opción -- </option>
                 @foreach($detalle as $detail)
                   <option value="{{$detail->id}}">

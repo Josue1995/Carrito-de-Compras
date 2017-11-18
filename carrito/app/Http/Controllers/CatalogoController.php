@@ -3,12 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Articulo;
-use App\Models\Detallearticulo;
-use Intervention\Image\Facades\Image;
-use Illuminate\Support\Facades\Response;
 
-class ArticuloController extends Controller
+class CatalogoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +13,7 @@ class ArticuloController extends Controller
      */
     public function index()
     {
-        $articulo = Articulo::join('detallearticulos', 'articulos.detallearticulo_id', '=', 'detallearticulos.id')->select('titulo_articulo', 'precio', 'descuento', 'existencias', 'imagen_articulo', 'descripcion_articulo', 'nombre_articulo', 'articulos.id')->paginate(2);
-        return view('articulo.index')->with('articulos', $articulo);
+        //
     }
 
     /**
@@ -28,8 +23,7 @@ class ArticuloController extends Controller
      */
     public function create()
     {
-        $detalle = Detallearticulo::all();
-        return view('articulo.create')->with('detalle', $detalle);
+        return view('catalogo.create');
     }
 
     /**
@@ -40,22 +34,7 @@ class ArticuloController extends Controller
      */
     public function store(Request $request)
     {
-        $articulo = new Articulo($request->all());
-        $articulo->detallearticulo_id = $request->get('detallearticulo_id');
-        $this -> validate($request, [
-            'imagen_articulo' => 'required|image'
-            ]);
-        
-        $extension = $request->file('imagen_articulo')->getClientOriginalExtension();
-        $nombre = $request->file('imagen_articulo')->getClientOriginalName();
-        $file_name = $nombre. '.' . $extension;
-        Image::make($request->file('imagen_articulo'))->resize(144,144)->save('imagenes/articulos/' . $file_name );
-        $articulo->imagen_articulo = $file_name;
-        
-        
-        $articulo->save();
-
-        return redirect('/articulo');
+        //
     }
 
     /**
