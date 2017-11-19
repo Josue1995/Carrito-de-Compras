@@ -111,7 +111,7 @@
               <a class="nav-link js-scroll-trigger" href="catalogo">Ver Mi Catalogo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{{ url('/') }}">Inventario</a>
+              <a class="nav-link js-scroll-trigger" href="inventario">Inventario</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>

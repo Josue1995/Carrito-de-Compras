@@ -12,7 +12,8 @@ class Inventario extends Model
     protected $fillable = [
       'stock_min',
       'stock_max',
-      'precioTotal'
+      'precioTotal',
+      'empresa_id'
     ];
 
     protected $dates = [

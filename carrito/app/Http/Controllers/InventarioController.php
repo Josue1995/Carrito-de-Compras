@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Inventario;
-
+use Illuminate\Support\Facades\Auth;
 
 class InventarioController extends Controller
 {
@@ -15,7 +15,7 @@ class InventarioController extends Controller
      */
     public function index()
     {
-      $inv = Inventario::paginate(2);
+      $inv = Inventario::with('empresa')->where('empresa_id', Auth::user()->empresa->id)->get();
       return view('inventario.index', compact('inv'));
     }
 

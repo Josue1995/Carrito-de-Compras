@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Empresa;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Catalogo;
+use App\Models\Inventario;
 
 
 
@@ -46,7 +48,11 @@ class EmpresaController extends Controller
         $empresa->user_id = $request->get('user_id');
         $empresa->save();
         if(Auth::user()->rol=='Empresa'){
-            return redirect('/catalogo/create');
+            $catalogo = Catalogo::create(['empresa_id' => Auth::user()->empresa->id]);
+            $catalogo->save();
+            $Inventario = Inventario::create(['stock_min' => 0, 'stock_max' => 0 , 'precioTotal' => 0.00, 'empresa_id' => Auth::user()->empresa->id]);
+            $Inventario->save();
+            return redirect('/home');
         }
         return redirect('/empresa');
     }

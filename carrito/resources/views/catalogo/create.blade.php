@@ -15,7 +15,6 @@
           <div class="form-group">
             <label for="empresa_id">Empresa</label>
             <select class="textWidth form-control" name="empresa_id" id="empresa_id" type="text">
-                <option disabled selected>--Seleccione su usuario--</option>
                 <option value="{{Auth::user()->empresa->id}}">{{Auth::user()->empresa->nombre_empresa}}</option>
             </select>
         </div>

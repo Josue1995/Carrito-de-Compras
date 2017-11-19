@@ -45,7 +45,7 @@ class CatalogoController extends Controller
         if(Auth::user()->rol == 'Empresa'){
             return redirect('/home');
         }
-        return redirect('home');
+        return redirect('/catalogo');
         
     }
 

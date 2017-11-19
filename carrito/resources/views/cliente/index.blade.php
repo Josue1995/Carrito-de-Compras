@@ -26,11 +26,11 @@
 			<tr>
 				<td>{{$cli->id}}</td>
 				<td>{{$cli->nombres}}</td>
-        <td>{{$cli->apellidos}}</td>
-        <td>{{$cli->direccion}}</td>
-        <td>{{$cli->pais}}</td>
-        <td>{{$cli->ciudad}}</td>
-        <td>{{$cli->name}}</td>
+        		<td>{{$cli->apellidos}}</td>
+        		<td>{{$cli->direccion}}</td>
+        		<td>{{$cli->pais}}</td>
+        		<td>{{$cli->ciudad}}</td>
+        		<td>{{$cli->name}}</td>
         
 				<td>
 					<form action="/Carrito-de-Compras/carrito/public/cliente/{{$cli->id}}" method="post">
