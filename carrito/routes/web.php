@@ -41,6 +41,7 @@ Route::get('/inventarioTrashed', 'InventarioController@trash');
 Route::get('/inventarioTrashed/{id}', 'InventarioController@restore');
 Route::get('/inventarioMostrar', 'InventarioController@mostrarArticulo');
 
+
 //Ruta para el controlador de la clase Cliente
 
 Route::resource('/cliente', 'ClienteController');
@@ -55,3 +56,5 @@ Route::resource('/catalogo', 'CatalogoController');
 
 //Rutas para el departamento
 Route::resource('/departamento', 'DepartamentoController');
+Route::get('/inventarioDeptos/{id}', 'DepartamentoController@mostrarDepto');
+Route::put('/inventarioMostrar/{id}', 'DepartamentoController@guardarArticulo');

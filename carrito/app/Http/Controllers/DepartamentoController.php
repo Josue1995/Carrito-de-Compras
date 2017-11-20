@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Departamento;
+use App\Models\Articulo;
 use Illuminate\Support\Facades\Auth;
 
 class DepartamentoController extends Controller
@@ -15,7 +16,8 @@ class DepartamentoController extends Controller
      */
     public function index()
     {
-        //
+        
+        
     }
 
     /**
@@ -90,5 +92,31 @@ class DepartamentoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function mostrarDepto($id)
+    {
+
+        if(Auth::user()->rol == 'Empresa')
+        {
+            $dep = Departamento::with('inventario')->where('inventario_id', Auth::user()->empresa->inventario->id)->get();
+            $artId = $id;
+            return view('dep.index')->with('dep', $dep)->with('artId', $artId);
+        }
+        elseif (Auth::user()->rol == 'Admin') {
+            $dep = Departamento::all();
+            
+            return view('dep.index')->with('dep', $dep);
+        }
+        else
+            return redirect('/home');
+    }
+
+    public function guardarArticulo(Request $request ,$id)
+    {
+        $articulo = Articulo::findOrFail($id);
+        $articulo->departamento_id = $request->get('departamento_id');
+        $articulo->update($request->all());
+        return redirect('inventarioMostrar/');
     }
 }

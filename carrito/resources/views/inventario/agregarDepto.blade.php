@@ -17,7 +17,7 @@
          		<th scope="col">Descuento</th>
          		<th scope="col">Existencias</th>
          		<th scope="col">Titulo</th>
-         		<th scope="col">Acciones</th>
+         		<th scope="col">Agregar depto</th>
 			</tr>
 
 		</thead>
@@ -32,30 +32,8 @@
         		<td>{{$a->descuento}}</td>
         		<td>{{$a->existencias}}</td>
         		<td>{{$a->titulo_articulo}}</td>
-				<td>
-					<div class="dropdown">
-        				<button class="btn btn-default dropdown-toggle" type="button" 
-           			 	id="menu1" data-toggle="dropdown">Tutoriales
-        				<span class="caret"></span></button>
-        				<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-          					<li role="presentation">
-            					<a role="menuitem" tabindex="-1" href="#">HTML Ya</a>
-          					</li>
-          					<li role="presentation">
-            					<a role="menuitem" tabindex="-1" href="#">CSS Ya</a>
-          					</li>
-          					<li role="presentation">
-            					<a role="menuitem" tabindex="-1" href="#">JavaScript</a>
-          					</li>
-          					<li role="presentation" class="divider">
-          					</li>
-          					<li role="presentation">
-            					<a role="menuitem" tabindex="-1" href="#">Fin</a>
-          					</li>
-        				</ul>
-      				</div>
-				</td>
-			</tr>
+            <td><a href="inventarioDeptos/{{$a->id}}" class="btn btn-success btn-sm">seleccionar depto</a></td>
+				</tr>
 			@endif
 			@empty
        <div class="row">

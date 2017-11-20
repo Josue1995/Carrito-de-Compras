@@ -116,4 +116,8 @@ class InventarioController extends Controller
         return view('inventario.agregarDepto')->with('articulo', $articulo);
     }
 
+    public function mostrarDepto()
+    {
+    }
+
 }
