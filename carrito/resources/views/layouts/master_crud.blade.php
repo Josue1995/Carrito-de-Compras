@@ -30,6 +30,14 @@
 
 
   </div>
-    <script type="text/javascript" src={{ asset('js/bootstrap.min.css') }}></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+    
+    <script type="text/javascript" src="{{asset('vendor/bootstrap/js/bootstrap.bundle.js')}}"></script>
+    <script type="text/javascript" src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/bootstrap.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('vendor/jquery/jquery.min.js')}} "></script>
+    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.css') }}"></script>
   </body>
 </html>

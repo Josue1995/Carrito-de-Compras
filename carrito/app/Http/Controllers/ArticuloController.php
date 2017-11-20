@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Articulo;
 use App\Models\Detallearticulo;
+use App\Models\Departamento;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,8 @@ class ArticuloController extends Controller
     public function create()
     {
         $detalle = Detallearticulo::all();
-        return view('articulo.create')->with('detalle', $detalle);
+        $deptos = Departamento::with('inventario')->where('inventario_id', Auth::user()->empresa->inventario->id)->get();
+        return view('articulo.create')->with('detalle', $detalle)->with('deptos', $deptos);
     }
 
     /**
@@ -43,6 +45,7 @@ class ArticuloController extends Controller
     {
         $articulo = new Articulo($request->all());
         $articulo->detallearticulo_id = $request->get('detallearticulo_id');
+
         $this -> validate($request, [
             'imagen_articulo' => 'required|image'
             ]);

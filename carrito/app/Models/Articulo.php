@@ -16,7 +16,8 @@ class Articulo extends Model
     'existencias',
     'imagen_articulo',
     'detalleArticulo_id',
-    'catalogo_id'
+    'catalogo_id',
+    'departamento_id'
   ];
 
   protected $dates = [

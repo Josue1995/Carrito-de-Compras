@@ -10,6 +10,10 @@ class Departamento extends Model
 
     'deleted_at'
   ];
+
+    protected $fillable = [
+    'nombre_departamento', 'inventario_id'
+    ];
       
     public function inventario()
     {

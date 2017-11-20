@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Inventario;
+use App\Models\Articulo;
+use App\Models\Departamento;
+use App\Models\Subclasificacion;
 use Illuminate\Support\Facades\Auth;
 
 class InventarioController extends Controller
@@ -16,7 +19,9 @@ class InventarioController extends Controller
     public function index()
     {
       $inv = Inventario::with('empresa')->where('empresa_id', Auth::user()->empresa->id)->get();
-      return view('inventario.index', compact('inv'));
+      $dep = Departamento::with('inventario')->where('inventario_id', Auth::user()->empresa->inventario->id)->get();
+      $articulos = Articulo::with('departamento')->where('catalogo_id', Auth::user()->empresa->catalogo->id)->whereHas('departamento')->orderBy('departamento_id')->get();
+      return view('inventario.index')->with('inv', $inv)->with('dep', $dep)->with('articulos', $articulos);
     }
 
     /**
@@ -37,9 +42,6 @@ class InventarioController extends Controller
      */
     public function store(Request $request)
     {
-      Inventario::create($request->all());
-
-      return redirect('/inventario');
     }
 
     /**
@@ -106,6 +108,12 @@ class InventarioController extends Controller
     {
         $inv = Inventario::onlyTrashed()->paginate(2);
         return view('inventario.trash', compact('inv'));
+    }
+
+    public function mostrarArticulo()
+    {   
+        $articulo = Articulo::with('catalogo')->where('catalogo_id', Auth::user()->empresa->catalogo->id)->paginate(3);
+        return view('inventario.agregarDepto')->with('articulo', $articulo);
     }
 
 }

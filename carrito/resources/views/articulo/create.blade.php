@@ -43,6 +43,19 @@
                 @endforeach
             </select>
       </div>
+      
+      <div class="form-group">
+        <label for="departamento_id">Departamento</label>
+        <select class="textWidth form-control" name="departamento_id" id="departamento_id" type="text">
+          <option disabled selected> --Seleccione el departamento--</option>
+          @foreach($deptos as $d)
+            <option value="{{$d->id}}">
+              {{$d->nombre_departamento}}
+            </option>
+          @endforeach
+        </select>
+      </div>
+
       <div class="form-group">
             <label for="catalogo_id">Su catalogo</label><br>
             <select class="textWidth form-control" name="catalogo_id" id="catalogo_id" type="text">
