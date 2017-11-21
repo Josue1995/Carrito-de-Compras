@@ -25,10 +25,10 @@
 				<td>{{$d->nombre_departamento}}</td>
 				@if(Auth::user()->rol=='Empresa')
 				<td>
-					<form action="/Carrito-de-Compras/carrito/public/inventarioMostrar/{{$artId}}" method="post">
+					<form action="/Carrito-de-Compras/carrito/public/inventarioMostrar/{{$artId}}/dep/{{$d->id}}" method="post">
 						{{csrf_field()}}
 						{{ method_field('PUT') }}
-						<input type="hidden" name="departamento_id" id="departamento_id" value="{{$d->departamento_id}}">
+						
 						<button class="btn btn-success btn-sm" type="submit">Agregar el articulo.</button>
 					</form>
 					

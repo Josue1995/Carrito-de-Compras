@@ -112,10 +112,10 @@ class DepartamentoController extends Controller
             return redirect('/home');
     }
 
-    public function guardarArticulo(Request $request ,$id)
+    public function guardarArticulo(Request $request ,$id, $id_dep)
     {
         $articulo = Articulo::findOrFail($id);
-        $articulo->departamento_id = $request->get('departamento_id');
+        $articulo->departamento_id = $id_dep;
         $articulo->update($request->all());
         return redirect('inventarioMostrar/');
     }

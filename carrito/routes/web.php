@@ -57,4 +57,4 @@ Route::resource('/catalogo', 'CatalogoController');
 //Rutas para el departamento
 Route::resource('/departamento', 'DepartamentoController');
 Route::get('/inventarioDeptos/{id}', 'DepartamentoController@mostrarDepto');
-Route::put('/inventarioMostrar/{id}', 'DepartamentoController@guardarArticulo');
+Route::put('/inventarioMostrar/{id}/dep/{dep_id}', 'DepartamentoController@guardarArticulo');
