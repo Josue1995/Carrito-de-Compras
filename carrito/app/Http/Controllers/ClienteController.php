@@ -16,7 +16,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-      $clientes =Cliente::join('users', 'users.id', '=', 'clientes.user_id')
+      $clientes =Cliente::join('users', 'users.id', '=', 'clientes.users_id')
       ->select('users.name', 'clientes.id', 'clientes.nombres', 'clientes.apellidos', 'clientes.direccion' , 'clientes.pais', 'clientes.ciudad')->paginate(2);
       return view('cliente.index', compact('clientes'));
     }
@@ -42,7 +42,7 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
       $cli = new Cliente($request->all());
-      $cli->user_id = $request->get('user_id');
+      $cli->users_id = $request->get('users_id');
       
       $cli->save();
       if(Auth::user()->rol == 'Cliente'){
@@ -72,7 +72,7 @@ class ClienteController extends Controller
     {
       $cliente = Cliente::findOrFail($id);
       
-      $userSpecific = User::with('cliente')->where('id', $cliente->user_id)->get();
+      $userSpecific = User::with('cliente')->where('id', $cliente->users_id)->get();
       $users = User::all();
        return view('cliente.edit')->with('cliente', $cliente)->with('user', $users)->with('specific', $userSpecific);
     }

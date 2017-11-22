@@ -15,6 +15,11 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/one-page-wonder.css')}}" rel="stylesheet">
+    
+    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('css/4-col-portfolio.css') }}" rel="stylesheet">
 
   </head>
 
@@ -53,80 +58,51 @@
       </div>
     </nav>
 
-    <header class="masthead">
-      <div class="overlay">
-        <div class="container">
-          <h1 class="display-1 text-white">One Page Wonder</h1>
-          <h2 class="display-4 text-white">Will Rock Your Socks Off</h2>
-        </div>
-      </div>
-    </header>
 
-    <section>
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6 order-2">
-            <div class="p-5">
-              <img class="img-fluid rounded-circle" src="https://unsplash.it/500/500?image=836" alt="">
-            </div>
-          </div>
-          <div class="col-md-6 order-1">
-            <div class="p-5">
-              <h2 class="display-4">For those about to rock...</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading -->
+      <h1 class="my-4">Page Heading
+        <small>Secondary Text</small>
+      </h1>
+      <div class="row">
+       @forelse($empresa as $emp)
+      
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="#">{{$emp->nombre_empresa}}</a>
+              </h4>
+              <p class="card-text">{{$emp->direccion_empresa}}</p>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+        @empty
+        <h1>No hay empresas registradas aún, espere pronto lo habrán</h1>
+        @endforelse
+      <!-- /.row -->
 
-    <section>
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6">
-            <div class="p-5">
-              <img class="img-fluid rounded-circle" src="https://unsplash.it/500/500?image=452" alt="">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="p-5">
-              <h2 class="display-4">We salute you!</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6 order-2">
-            <div class="p-5">
-              <img class="img-fluid rounded-circle" src="https://unsplash.it/500/500?image=453" alt="">
-            </div>
-          </div>
-          <div class="col-md-6 order-1">
-            <div class="p-5">
-              <h2 class="display-4">Let there be rock!</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+      <!-- Pagination -->
+      
+    </div>
+    <!-- /.container -->
+    <div class="offset-lg-6 offset-md-6 offset-sm-3 offset-xs-3">
+    {{$empresa->links()}}
+    </div>
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Pacman´s Sons 2017</p>
       </div>
       <!-- /.container -->
     </footer>
 
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset(' vendor/bootstrap/js/bootstrap.bundle.min.js ') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
   </body>
 
